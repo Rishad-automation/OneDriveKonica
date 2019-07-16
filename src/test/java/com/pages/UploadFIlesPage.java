@@ -2,6 +2,11 @@ package com.pages;
 
 import static org.testng.Assert.assertEquals;
 
+import java.awt.AWTException;
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.io.File;
 
 import org.openqa.selenium.Alert;
@@ -14,87 +19,159 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 
+import com.base.OneDriveBase;
 
-
-public class UploadFIlesPage{
+public class UploadFIlesPage extends OneDriveBase {
 	WebDriver driver;
+
 	public UploadFIlesPage() {
-	PageFactory.initElements(driver, this);
+		PageFactory.initElements(driver, this);
 	}
 
 	// UploadFileElements
 	@FindBy(xpath = "//div[contains(text(),'Upload')]")
 	WebElement UploadButton;
-	
-	//upload new
+
+	// upload new
 	@FindBy(xpath = "//div[@id='id__29']")
 	WebElement UploadButton1;
-	
-	//Files Element
+
+	// Files Element
 	@FindBy(xpath = "//li[@role='presentation']/descendant::span[contains(text(),'Files')]")
 	WebElement filesButton;
-	
-	//Files Element
+
+	// Files Element
 	@FindBy(xpath = "//span[@class='ms-ContextualMenu-itemText label-109'][contains(text(),'Files')]")
 	WebElement filesButton1;
-	
-	
-	//uploaded text file
-	@FindBy(xpath="//span[contains(text(),'TextFile.txt')]")
+
+	// uploaded text file
+	@FindBy(xpath = "//span[contains(text(),'TextFile.txt')]")
 	WebElement uploadedFileText;
-	
-	//uploaded text file
-	@FindBy(xpath="//span[contains(text(),'TextFile (1).txt')]")
+
+	// uploaded text file
+	@FindBy(xpath = "//span[contains(text(),'TextFile (1).txt')]")
 	WebElement uploadedFileText1;
-	
-	//Delete Files
-	@FindBy(xpath="//button[@name='Delete']//div[@class='ms-Button-flexContainer flexContainer-61']")
+
+	// Delete Files
+	@FindBy(xpath = "//button[@name='Delete']//div[@class='ms-Button-flexContainer flexContainer-61']")
 	WebElement deleteFile;
-	
-	//CopyToFile
-	@FindBy(xpath="//button[@name='Copy to']//div[@class='ms-Button-flexContainer flexContainer-61']")
+
+	// CopyToFile
+	@FindBy(xpath = "//button[@name='Copy to']//div[@class='ms-Button-flexContainer flexContainer-61']")
 	WebElement copyToFile;
-	
-	//CopyButton
-	@FindBy(xpath="//button[@name='Copy']//div[@class='ms-Button-flexContainer flexContainer-61']")
+
+	// CopyButton
+	@FindBy(xpath = "//button[@name='Copy']//div[@class='ms-Button-flexContainer flexContainer-61']")
 	WebElement copyButton;
-	
-	
-	//XButton
-	@FindBy(xpath="//button[@name='Close']//div[@class='ms-Button-flexContainer flexContainer-61']")
+
+	// XButton
+	@FindBy(xpath = "//button[@name='Close']//div[@class='ms-Button-flexContainer flexContainer-61']")
 	WebElement ButtonX;
-	
-	//DownloadButton
-	@FindBy(xpath="//button[@name='Download']//div[@class='ms-Button-flexContainer flexContainer-61']")
+
+	// DownloadButton
+	@FindBy(xpath = "//button[@name='Download']//div[@class='ms-Button-flexContainer flexContainer-61']")
 	WebElement downloadButton;
-	
-	
-	//FilesCheckbox
-	@FindBy(xpath = "")   //Didn't find the xpath
+
+	// FilesCheckbox
+	@FindBy(xpath = "//div[@data-automationid='TextFile.txt']//span[@role='checkbox']")
 	WebElement TextFileCheckBox;
-	//Info Button
+	// Info Button
 	@FindBy(xpath = "//i[contains(text(),'')]")
 	WebElement infoButton;
-	//Filesize
-	@FindBy(xpath = "//dd[contains(text(),'19 bytes')]")
+	// Filesize
+	@FindBy(xpath = "//dl[@class='InfoPaneSection-informationBody']/dd[contains(text(),'bytes')]")
 	WebElement DataSize;
 	@FindBy(xpath = "//div[contains(text(), 'Open')]")
 	WebElement Editor;
 
 	public void uploadFileButton() {
 		UploadButton.click();
-		
 	}
+
 	// Zero Beta File Upload
-	public void zeroFilesClick() {
+	public void zeroFilesClick() throws InterruptedException, AWTException {
+
 		filesButton.click();
-		filesButton.sendKeys("/Users/nazmulhoque/eclipse-workspace/OneDriveAutomation/FORMAT70.CMD");
+
+//		//Using SendKeys::
+//		String ZeroFilePath  = System.getProperty("user.dir") + "/File/FORMAT70.CMD";
+//		filesButton.sendKeys(ZeroFile);
+
+		// Using Robot Class::
+
+		// Specify the file location with extension
+		String ZeroFilePath = System.getProperty("user.dir") + "/File/FORMAT70.CMD";
+		StringSelection sel = new StringSelection(ZeroFilePath);
+
+		// Copy to clipboard
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel, null);
+		System.out.println("selection" + sel);
+
+		// Create object of Robot class
+		Robot robot = new Robot();
+		Thread.sleep(1000);
+
+		// Press Enter
+		robot.keyPress(KeyEvent.VK_ENTER);
+
+		// Release Enter
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		// Press CTRL+V
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+
+		// Release CTRL+V
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
+		Thread.sleep(1000);
+
+		// Press Enter
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
 	}
 
 	// TextFile Upload
-	public void textFilesClick() {
+	public void textFilesClick() throws AWTException, InterruptedException {
 		filesButton.click();
-		filesButton.sendKeys("Users/nazmulhoque/eclipse-workspace/OneDriveAutomation/TextFile.txt");
+
+		// Using SendKeys::
+//		String textFile  = System.getProperty("user.dir") + "/File/TextFile.txt";
+//		filesButton.sendKeys(textFile);
+
+		// Using Robot Class::
+
+		// Specify the file location with extension
+		String textFilePath = System.getProperty("user.dir") + "/File/TextFile.txt";
+		StringSelection sel = new StringSelection(textFilePath);
+
+		// Copy to clipboard
+		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(sel, null);
+		System.out.println("selection" + sel);
+
+		// Create object of Robot class
+		Robot robot = new Robot();
+		Thread.sleep(1000);
+
+		// Press Enter
+		robot.keyPress(KeyEvent.VK_ENTER);
+
+		// Release Enter
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
+		// Press CTRL+V
+		robot.keyPress(KeyEvent.VK_CONTROL);
+		robot.keyPress(KeyEvent.VK_V);
+
+		// Release CTRL+V
+		robot.keyRelease(KeyEvent.VK_CONTROL);
+		robot.keyRelease(KeyEvent.VK_V);
+		Thread.sleep(1000);
+
+		// Press Enter
+		robot.keyPress(KeyEvent.VK_ENTER);
+		robot.keyRelease(KeyEvent.VK_ENTER);
+
 	}
 
 	// Zero file uploaded alert
@@ -143,11 +220,24 @@ public class UploadFIlesPage{
 	public void textFileSize() {
 		// WebElement DataSize = driver.findElement(By.xpath("//dd[contains(text(),'19
 		// bytes')]"));
-		Assert.assertEquals(DataSize, "19 bytes");
-		File f = new File("/Users/nazmulhoque/eclipse-workspace/OneDriveAutomation/TextFile.txt");
-		long Sourcesize = f.getTotalSpace();
-		System.out.println(Sourcesize);
-		Assert.assertEquals("Message displayed:" + Sourcesize, "19 bytes");
+		String size = DataSize.getText();
+		System.out.println("Uploaded file bytes:" + size);
+		Assert.assertEquals(size, "19 bytes");
+
+		String textFile = System.getProperty("user.dir") + "/File/TextFile.txt";
+		File f = new File(textFile);
+		if (f.exists()) {
+			String bytes = f.length() + " bytes";
+			// double kilobytes = (bytes / 1024);
+			// String bytesAsString = Double.toString(bytes);
+			System.out.println("bytes : " + bytes);
+			// System.out.println("kilobytes : " + kilobytes);
+			System.out.println("Sourcefile bytes : " + bytes);
+
+			Assert.assertEquals(size, bytes);
+		} else {
+			System.out.println("File does not exists!");
+		}
 	}
 	// Update the contents of the text document
 

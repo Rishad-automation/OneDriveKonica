@@ -7,6 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 
 public class ifDownloadFile {
 	WebDriver driver;
+
 	public ifDownloadFile() {
 		PageFactory.initElements(driver, this);
 	}

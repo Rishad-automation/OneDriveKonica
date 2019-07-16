@@ -6,9 +6,9 @@
       <class name="com.test.TestUploadFile">
         <methods>
           <include name="endReport"/>
+          <include name="testUpdateContents"/>
           <include name="startReport"/>
           <include name="getResult"/>
-          <include name="testZeroByte"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.test.TestUploadFile -->
