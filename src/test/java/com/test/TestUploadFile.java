@@ -50,7 +50,7 @@ public class TestUploadFile extends OneDriveBase {
 	// Test Case 2
 	// Attempt to upload a 0 byte file to the documents folder. Verify and track the
 	// status of the upload.
-	// @Test(priority = 1)
+	@Test(priority = 1)
 
 	public void uploadZeroByte() throws InterruptedException, AWTException {
 		Thread.sleep(2000);
@@ -66,7 +66,7 @@ public class TestUploadFile extends OneDriveBase {
 	// Test Case 3
 	// Attempt to upload a text file with content to the documents folder. Verify
 	// and track the status of the upload
-	// @Test(priority = 2)
+	 @Test(priority = 2)
 	public void uploadTextFile() throws InterruptedException, AWTException {
 
 		upload = PageFactory.initElements(driver, UploadFIlesPage.class);
@@ -80,7 +80,7 @@ public class TestUploadFile extends OneDriveBase {
 //Test Case 4
 //Select the uploaded document and click on the info button in the top right of the screen.
 //Verify metadata about the document is correct by comparing it to the source file
-// @Test(priority = 3)
+@Test(priority = 3)
 	public void verifyMetada() {
 		upload = PageFactory.initElements(driver, UploadFIlesPage.class);
 		upload.selectUploadedDocs();
@@ -92,7 +92,7 @@ public class TestUploadFile extends OneDriveBase {
 	// Test Case 5
 	// Download the versions before update and compare the contents to make sure
 	// they download correctly.
-	 //@Test(priority = 4)
+	 @Test(priority = 4)
 	public void downloadFileBeforeUpdate() throws InterruptedException {
 
 		Filecontents = PageFactory.initElements(driver, UpdateDeleteContentsPage.class);
@@ -147,7 +147,7 @@ public class TestUploadFile extends OneDriveBase {
 
 	// Test Case 8
 	// Delete the document from OneDrive.
-	//@Test(priority = 7)
+	@Test(priority = 7)
 	public void deleteFile() throws InterruptedException {
 
 		Filecontents = PageFactory.initElements(driver, UpdateDeleteContentsPage.class);

@@ -40,11 +40,7 @@ public class UploadFIlesPage extends OneDriveBase {
 	@FindBy(xpath = "//li[@role='presentation']/descendant::span[contains(text(),'Files')]")
 	WebElement filesButton;
 
-	// Files Element
-	@FindBy(xpath = "//span[@class='ms-ContextualMenu-itemText label-109'][contains(text(),'Files')]")
-	WebElement filesButton1;
-
-	// uploaded text file
+		// uploaded text file
 	@FindBy(xpath = "//span[contains(text(),'TextFile.txt')]")
 	WebElement uploadedFileText;
 
@@ -52,35 +48,18 @@ public class UploadFIlesPage extends OneDriveBase {
 	@FindBy(xpath = "//span[contains(text(),'TextFile (1).txt')]")
 	WebElement uploadedFileText1;
 
-	// Delete Files
-	@FindBy(xpath = "//button[@name='Delete']//div[@class='ms-Button-flexContainer flexContainer-61']")
-	WebElement deleteFile;
-
-	// CopyToFile
-	@FindBy(xpath = "//button[@name='Copy to']//div[@class='ms-Button-flexContainer flexContainer-61']")
-	WebElement copyToFile;
-
-	// CopyButton
-	@FindBy(xpath = "//button[@name='Copy']//div[@class='ms-Button-flexContainer flexContainer-61']")
-	WebElement copyButton;
-
-	// XButton
-	@FindBy(xpath = "//button[@name='Close']//div[@class='ms-Button-flexContainer flexContainer-61']")
-	WebElement ButtonX;
-
-	// DownloadButton
-	@FindBy(xpath = "//button[@name='Download']//div[@class='ms-Button-flexContainer flexContainer-61']")
-	WebElement downloadButton;
-
 	// FilesCheckbox
 	@FindBy(xpath = "//div[@data-automationid='TextFile.txt']//span[@role='checkbox']")
 	WebElement TextFileCheckBox;
 	// Info Button
 	@FindBy(xpath = "//i[contains(text(),'')]")
 	WebElement infoButton;
+	
 	// Filesize
 	@FindBy(xpath = "//dl[@class='InfoPaneSection-informationBody']/dd[contains(text(),'bytes')]")
 	WebElement DataSize;
+	
+	//Editor Button
 	@FindBy(xpath = "//div[contains(text(), 'Open')]")
 	WebElement Editor;
 
@@ -222,7 +201,7 @@ public class UploadFIlesPage extends OneDriveBase {
 		// bytes')]"));
 		String size = DataSize.getText();
 		System.out.println("Uploaded file bytes:" + size);
-		Assert.assertEquals(size, "19 bytes");
+		Assert.assertEquals(size, "26 bytes");
 
 		String textFile = System.getProperty("user.dir") + "/File/TextFile.txt";
 		File f = new File(textFile);
@@ -239,6 +218,30 @@ public class UploadFIlesPage extends OneDriveBase {
 			System.out.println("File does not exists!");
 		}
 	}
+	
+	// Files Element
+		@FindBy(xpath = "//span[@class='ms-ContextualMenu-itemText label-109'][contains(text(),'Files')]")
+		WebElement filesButton1;
+		
 	// Update the contents of the text document
+	// Delete Files
+		@FindBy(xpath = "//button[@name='Delete']//div[@class='ms-Button-flexContainer flexContainer-61']")
+		WebElement deleteFile;
+
+		// CopyToFile
+		@FindBy(xpath = "//button[@name='Copy to']//div[@class='ms-Button-flexContainer flexContainer-61']")
+		WebElement copyToFile;
+
+		// CopyButton
+		@FindBy(xpath = "//button[@name='Copy']//div[@class='ms-Button-flexContainer flexContainer-61']")
+		WebElement copyButton;
+
+		// XButton
+		@FindBy(xpath = "//button[@name='Close']//div[@class='ms-Button-flexContainer flexContainer-61']")
+		WebElement ButtonX;
+
+		// DownloadButton
+		@FindBy(xpath = "//button[@name='Download']//div[@class='ms-Button-flexContainer flexContainer-61']")
+		WebElement downloadButton;
 
 }

@@ -110,6 +110,7 @@ public class OneDriveBase{
 		driver.manage().deleteAllCookies();
 		driver.manage().timeouts().pageLoadTimeout(UtilitiesFIle.PAGE_LOAD_TIMEOUT, TimeUnit.SECONDS);
 		driver.manage().timeouts().implicitlyWait(UtilitiesFIle.IMPLICIT_WAIT, TimeUnit.SECONDS);
+driver.manage().timeouts().implicitlyWait(4000, TimeUnit.MINUTES);
 
 		driver.get(prop.getProperty("baseURL"));
 	}

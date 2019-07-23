@@ -27,11 +27,12 @@ public class UpdateDeleteContentsPage {
 	@FindBy(xpath = "//div[@data-automationid='TextFile.txt']//span[@role='checkbox']")
 	WebElement TextFileCheckBox;
 	
-	// Open in Text Editor Button
-	//WebDriverWait wait=new WebDriverWait(driver, 20);
-	//WebElement Editor= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Open')]")));
-	@FindBy(xpath = "//div[contains(text(), 'Open')]")
-	WebElement Editor;
+	 //Open in Text Editor Button
+	WebDriverWait wait=new WebDriverWait(driver, 20);
+	WebElement Editor= wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//div[contains(text(), 'Open')]")));
+		
+	//@FindBy(xpath = "//div[contains(text(), 'Open')]")
+	//WebElement Editor;
 	
 	//Text Body
 	@FindBy(xpath = "//div[@class='view-lines']//div[1]]")
@@ -65,16 +66,16 @@ public class UpdateDeleteContentsPage {
 		String childwindowID = it.next();
 		driver.switchTo().window(childwindowID);
 	
-		String Title = driver.getTitle();
-		System.out.println("ChildWindow title;" + Title);
-		Assert.assertEquals(Title, "OneDrive");
+//		String Title = driver.getTitle();
+//		System.out.println("ChildWindow title;" + Title);
+//		Assert.assertEquals(Title, "OneDrive");
 	
 		TextBody.clear();
 	
 		TextBody.sendKeys("Updated");
 		SaveButton.click();
-		driver.close();
-		driver.switchTo().window(parentwindowID);
+		//driver.close();
+		//driver.switchTo().window(parentwindowID);
 	}
 
 	public void deleteFile() {

@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/1/0</td>
 </tr><tr>
-<td>Started on:</td><td>Sat Jul 13 15:25:14 EDT 2019</td>
+<td>Started on:</td><td>Sat Jul 20 12:36:53 EDT 2019</td>
 </tr>
-<tr><td>Total time:</td><td>17 seconds (17538 ms)</td>
+<tr><td>Total time:</td><td>18 seconds (18220 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -75,10 +75,10 @@ function toggleAllBoxes() {
 <td><b>Instance</b></td>
 </tr>
 <tr>
-<td title='com.test.TestUploadFile.testUpdateContents()'><b>testUpdateContents</b><br>Test class: com.test.TestUploadFile</td>
+<td title='com.test.TestUploadFile.downloadFileBeforeUpdate()'><b>downloadFileBeforeUpdate</b><br>Test class: com.test.TestUploadFile</td>
 <td><div><pre>java.lang.NullPointerException
-	at com.pages.UpdateDeleteContentsPage.windowhandle(UpdateDeleteContentsPage.java:62)
-	at com.test.TestUploadFile.testUpdateContents(TestUploadFile.java:118)
+	at com.pages.ifDownloadFile.isFileDownloaded(ifDownloadFile.java:25)
+	at com.test.TestUploadFile.downloadFileBeforeUpdate(TestUploadFile.java:105)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -103,10 +103,10 @@ function toggleAllBoxes() {
 	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
-</pre></div><a href='#' onClick='toggleBox("stack-trace488669101", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace488669101'><pre>java.lang.NullPointerException
-	at com.pages.UpdateDeleteContentsPage.windowhandle(UpdateDeleteContentsPage.java:62)
-	at com.test.TestUploadFile.testUpdateContents(TestUploadFile.java:118)
+</pre></div><a href='#' onClick='toggleBox("stack-trace409596180", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace409596180'><pre>java.lang.NullPointerException
+	at com.pages.ifDownloadFile.isFileDownloaded(ifDownloadFile.java:25)
+	at com.test.TestUploadFile.downloadFileBeforeUpdate(TestUploadFile.java:105)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -132,8 +132,8 @@ function toggleAllBoxes() {
 	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
 	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
 </pre></div></td>
-<td>4</td>
-<td>com.test.TestUploadFile@79079097</td></tr>
+<td>6</td>
+<td>com.test.TestUploadFile@40005471</td></tr>
 </table><p>
 </body>
 </html>
